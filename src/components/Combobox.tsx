@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, MouseEvent, useState } from "react";
 import './Combobox.scss';
 
 type FruitOption = {
@@ -34,6 +34,14 @@ export const Combobox: FC<ComboboxProps> = ({
     filterOptions(event.currentTarget.value);
   };
 
+  const onOptionSelect = (event: MouseEvent<HTMLLIElement>) => {
+    if (event.currentTarget.dataset.index) {
+      const index = parseInt(event.currentTarget.dataset.index)
+      setInputValue(optionsArray[index]?.value);
+      setShowPopover(false);
+    }
+  };
+
   return (
     <div className='combobox'>
       <input type='text' value={inputValue} placeholder={placeholder} className='combobox-input' onChange={onInputChanged} />
@@ -43,6 +51,8 @@ export const Combobox: FC<ComboboxProps> = ({
             <li
               className="combobox-popover-item"
               key={index}
+              data-index={index}
+              onClick={onOptionSelect}
             >
               {item.text}
             </li>
