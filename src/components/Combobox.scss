@@ -28,6 +28,10 @@ $popover-top-border: #fdfdff;
       }
   }
 
+  &:has(input:not(:placeholder-shown)):has(:not(:focus-visible)){
+    box-shadow: -1px 1px 1px #d1d1d1;
+  }
+
   &.suggesting {
     border-bottom: 0;
     border-bottom-left-radius: 0;

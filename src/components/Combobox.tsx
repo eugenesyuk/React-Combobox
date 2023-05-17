@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, MouseEvent, useState } from "react";
+import { ChangeEvent, FC, MouseEvent, useRef, useState } from "react";
 import cn from "classnames";
 import "./Combobox.scss";
 
@@ -19,6 +19,7 @@ export const Combobox: FC<ComboboxProps> = ({
   const [optionsArray, setOptionsArray] = useState(data);
   const [showPopover, setShowPopover] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const filterOptions = (term: string) => {
     const filtered = data.filter((item) => {
@@ -40,6 +41,7 @@ export const Combobox: FC<ComboboxProps> = ({
       const index = parseInt(event.currentTarget.dataset.index);
       setInputValue(optionsArray[index]?.value);
       setShowPopover(false);
+      inputRef.current && inputRef.current.blur()
     }
   };
 
@@ -60,6 +62,7 @@ export const Combobox: FC<ComboboxProps> = ({
         className='combobox-input'
         onChange={onInputChanged}
         onBlur={onInputBlured}
+        ref={inputRef}
       />
       {showPopover && (
         <ul className='combobox-popover'>
