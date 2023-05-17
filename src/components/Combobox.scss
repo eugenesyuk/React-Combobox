@@ -1,12 +1,68 @@
+$blue: #206af3;
+$placeholder-text: #717171;
+$placeholder-bg: #f4f4f4;
+$text: #0f0f0f;
+$border-radius: .5rem;
+$item-hover: #e8ecef;
+$popover-top-border: #fdfdff;
+
 .combobox {
   position: relative;
+  display: inline-block;
+  background-color: $placeholder-bg;
+  border-radius: $border-radius;
+  user-select: none;
+  width: 320px;
+
+  &:has(:focus-visible) {
+      border: 2px solid $blue;
+      background-color: white;
+
+      .combobox-popover {
+        border: 2px solid $blue;
+        border-top: 0;
+      }
+
+      &.suggesting input[type=text] {
+        border-bottom: 3px solid $popover-top-border;
+      }
+  }
+
+  &.suggesting {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
   input[type=text] {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgb(113,113,113)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px 12px;
     padding: 15px;
     font-size: 1rem;
+    line-height: 1;
+    font-family: inherit;
+    font-weight: 600;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:focus-visible {
+      outline: 0;
+      border: 0;
+    }
+
+    &::placeholder {
+      color: $placeholder-text;
+      font-weight: 500;
+    }
   }
 
   &-popover {
+    background: white;
     position: absolute;
     list-style: none;
     top: 100%;
@@ -14,13 +70,19 @@
     right: -2px;
     padding: 0;
     margin: 0;
-  
+    text-align: left;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    overflow: hidden;
+    
     &-item {
-      padding: 5px 20px;
+      padding: 8px 20px;
+      font-weight: 500;
+      color: $text;
 
       &:hover {
         cursor: pointer;
-        background-color: aliceblue;
+        background-color: $item-hover;
       }
     }
   }

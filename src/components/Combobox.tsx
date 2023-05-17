@@ -52,12 +52,12 @@ export const Combobox: FC<ComboboxProps> = ({
   };
 
   return (
-    <div className='combobox'>
+    <div className={cn("combobox", showPopover && "suggesting")}>
       <input
         type='text'
         value={inputValue}
         placeholder={placeholder}
-        className={cn("combobox", showPopover && "suggesting")}
+        className='combobox-input'
         onChange={onInputChanged}
         onBlur={onInputBlured}
       />

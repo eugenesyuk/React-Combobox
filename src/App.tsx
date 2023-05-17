@@ -11,8 +11,8 @@ const fruits = [
     value: "Banana"
   },
   {
-    text: "🫐 Blueberries",
-    value: "Blueberries"
+    text: "🫐 Blueberry",
+    value: "Blueberry"
   },
   {
     text: "🥭 Mango",
