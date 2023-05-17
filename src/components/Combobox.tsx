@@ -42,9 +42,17 @@ export const Combobox: FC<ComboboxProps> = ({
     }
   };
 
+  const onInputBlured = () => {
+    setShowPopover(false);
+  };
+
+  const onPopoverMouseDown = (event: MouseEvent) => {
+    event.preventDefault();
+  };
+
   return (
     <div className='combobox'>
-      <input type='text' value={inputValue} placeholder={placeholder} className='combobox-input' onChange={onInputChanged} />
+      <input type='text' value={inputValue} placeholder={placeholder} className='combobox-input' onChange={onInputChanged} onBlur={onInputBlured} />
       {showPopover && (
         <ul className="combobox-popover">
           {optionsArray.map((item, index) => (
@@ -53,6 +61,7 @@ export const Combobox: FC<ComboboxProps> = ({
               key={index}
               data-index={index}
               onClick={onOptionSelect}
+              onMouseDown={onPopoverMouseDown}
             >
               {item.text}
             </li>
