@@ -1,6 +1,27 @@
 .combobox {
+  position: relative;
+
   input[type=text] {
     padding: 15px;
     font-size: 1rem;
+  }
+
+  &-popover {
+    position: absolute;
+    list-style: none;
+    top: 100%;
+    left: -2px;
+    right: -2px;
+    padding: 0;
+    margin: 0;
+  
+    &-item {
+      padding: 5px 20px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: aliceblue;
+      }
+    }
   }
 }
