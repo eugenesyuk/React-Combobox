@@ -45,6 +45,10 @@ export const Combobox: FC<ComboboxProps> = ({
     }
   };
 
+  const onInputFocused = () => {
+    optionsArray.length && setShowPopover(true);
+  };
+
   const onInputBlured = () => {
     setShowPopover(false);
   };
@@ -60,6 +64,7 @@ export const Combobox: FC<ComboboxProps> = ({
         value={inputValue}
         placeholder={placeholder}
         className='combobox-input'
+        onFocus={onInputFocused}
         onChange={onInputChanged}
         onBlur={onInputBlured}
         ref={inputRef}
