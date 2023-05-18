@@ -85,7 +85,7 @@ export const Combobox: FC<ComboboxProps> = ({
         aria-label={placeholder}
         role='combobox'
       />
-      <ul className='combobox-popover' id={`listbox-${listboxId}`}>
+      <ul className='combobox-popover' id={`listbox-${listboxId}`} hidden={showPopover ? false : true}>
         {optionsArray.map((item, index) => (
           <li
             className='combobox-popover-item'

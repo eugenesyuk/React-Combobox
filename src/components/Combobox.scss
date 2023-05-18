@@ -36,10 +36,6 @@ $popover-top-border: #fdfdff;
     border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-
-    .combobox-popover {
-      display: block;
-    }
   }
 
   input[type=text] {
@@ -82,7 +78,6 @@ $popover-top-border: #fdfdff;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
     overflow: hidden;
-    display: none;
     
     &-item {
       padding: 8px 20px;
